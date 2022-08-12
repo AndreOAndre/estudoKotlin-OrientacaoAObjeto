@@ -1,12 +1,99 @@
 fun main() {
     println("Bem vindo ao Bytebank!")
-    Conta()
+    //    println(estudoCopiaReferencia())
+
+
+    var contaAlex = Conta()
+    contaAlex.titular = "Alex"
+    contaAlex.numero = 1000
+    contaAlex.setSaldo(200.0)
+
+    var contaFran = Conta()
+    contaFran.titular = "Fran"
+    contaFran.numero = 1001
+    contaFran.setSaldo(300.0)
+
+
+//    println("TITULAR:  ${contaFran.titular}")
+//    println("NUMERO: ${contaFran.numero}")
+//    println("SALDO:  ${contaFran.saldo}")
+//    println()
+//    println("TITULAR: ${contaAlex.titular}")
+//    println("NUMERO: ${contaAlex.numero}")
+//    println("SALDO: ${contaAlex.saldo}")
+
+    println("depositando na conta do Alex")
+    contaAlex.deposita(50.0)
+    println(contaAlex.getSaldo())
+
+    println("depositando na conta da Fran")
+    contaFran.deposita(50.0)
+    println(contaFran.getSaldo())
+
+    println() //LINHA DE SEPARAÇÃO//
+
+    println("sacando conta alex")
+    contaAlex.saca(250.0)
+    println(contaAlex.getSaldo())
+
+    println()
+
+    println("saque em excesso na conta do Alex")
+    contaAlex.saca(300.0)
+    println(contaAlex.getSaldo())
+
+    println("saque em excesso na conta da Fran")
+    contaFran.saca(500.0)
+    println(contaFran.getSaldo())
+
+    println()
+
+    println("transferencia da conta da Fran para o Alex")
+    if (contaFran.transfere(100.0, contaAlex)) {
+        println("transferencia bem sucedida")
+    } else {
+        println("falha na transferencia")
+    }
+
+    println()
+    println("SALDO ALEX: ${contaAlex.getSaldo()}")
+    println("SALDO FRAN: ${contaFran.getSaldo()}")
+
+
 }
 
 class Conta {
     var titular = ""
     var numero = 0
-    var saldo = 0.0
+    private var saldo = 0.0
+
+
+    fun deposita(valor: Double) {
+        this.saldo += valor
+    }
+
+    fun saca(valor: Double) {
+        if (saldo >= valor) {
+            saldo -= valor
+        }
+    }
+
+    fun transfere(valor: Double, destino: Conta): Boolean {
+        if (saldo >= valor) {
+            saldo -= valor
+            destino.saldo += valor
+            return true
+        }
+        return false
+    }
+
+    fun getSaldo(): Double {
+        return saldo
+    }
+
+    fun setSaldo(valor: Double) {
+        saldo = valor
+    }
 }
 
 
@@ -44,6 +131,31 @@ fun testalaco() {
 //        println("saldo da conta: $saldo")
 //        println("")
     }
+}
+
+fun estudoCopiaReferencia() {
+    //--CÓPIA--//
+    // NESTE CASO CRIAMOS UMA CÓPIA DO NÚMERO X QUE SERIA 10 E SOMAMOS +1 FAZENDO QUE O X FICASSE 10 E Y FICASSE 11//
+    val numeroX = 10
+    var numeroY = numeroX
+    numeroY++
+
+    println(numeroX)
+    println(numeroY)
+    //-------------------//
+
+
+    //--REFERENCIA--//
+    // JÁ NESSE CASO FAZEMOS UMA REFERENCIA, POIS SE TRATA DE OBJETOS. (contaMAria -ref.-> contaJoao -ref.-> Conta())
+    val contaJoao = Conta()
+    val contaMaria = contaJoao
+    contaJoao.titular = "joão"
+    contaMaria.titular = "Maria"
+
+    println(contaJoao.titular)
+    println(contaMaria.titular)
+    //-------------------------//
+
 }
 
 fun estudoFor() {
