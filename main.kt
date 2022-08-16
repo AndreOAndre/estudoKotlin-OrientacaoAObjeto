@@ -3,73 +3,81 @@ fun main() {
     //    println(estudoCopiaReferencia())
 
 
-    var contaAlex = Conta()
-    contaAlex.titular = "Alex"
-    contaAlex.numero = 1000
-    contaAlex.setSaldo(200.0)
+    var contaAlex = Conta("alex", 1000)
+    contaAlex.deposita(200.0)
 
-    var contaFran = Conta()
-    contaFran.titular = "Fran"
-    contaFran.numero = 1001
-    contaFran.setSaldo(300.0)
+    var contaFran = Conta("fran", 1001)
+
+    contaFran.deposita(300.0)
 
 
-//    println("TITULAR:  ${contaFran.titular}")
-//    println("NUMERO: ${contaFran.numero}")
-//    println("SALDO:  ${contaFran.saldo}")
-//    println()
-//    println("TITULAR: ${contaAlex.titular}")
-//    println("NUMERO: ${contaAlex.numero}")
-//    println("SALDO: ${contaAlex.saldo}")
+    println("TITULAR:  ${contaFran.titular}")
+    println("NUMERO: ${contaFran.numero}")
+    println("SALDO:  ${contaFran.saldo}")
+    println()
+    println("TITULAR: ${contaAlex.titular}")
+    println("NUMERO: ${contaAlex.numero}")
+    println("SALDO: ${contaAlex.saldo}")
 
     println("depositando na conta do Alex")
     contaAlex.deposita(50.0)
-    println(contaAlex.getSaldo())
+    println(contaAlex.saldo)
 
     println("depositando na conta da Fran")
     contaFran.deposita(50.0)
-    println(contaFran.getSaldo())
+    println(contaFran.saldo)
 
     println() //LINHA DE SEPARAÇÃO//
 
     println("sacando conta alex")
-    contaAlex.saca(250.0)
-    println(contaAlex.getSaldo())
+    contaAlex.deposita(250.0)
+    println(contaAlex.saldo)
 
     println()
 
     println("saque em excesso na conta do Alex")
-    contaAlex.saca(300.0)
-    println(contaAlex.getSaldo())
+    contaAlex.deposita(300.0)
+    println(contaAlex.saldo)
 
     println("saque em excesso na conta da Fran")
-    contaFran.saca(500.0)
-    println(contaFran.getSaldo())
+    contaFran.deposita(500.0)
+    println(contaFran.saldo)
 
     println()
 
     println("transferencia da conta da Fran para o Alex")
-    if (contaFran.transfere(100.0, contaAlex)) {
+    if (contaFran.transfere(destino = contaAlex, valor = 100.0)) {
         println("transferencia bem sucedida")
     } else {
         println("falha na transferencia")
     }
 
     println()
-    println("SALDO ALEX: ${contaAlex.getSaldo()}")
-    println("SALDO FRAN: ${contaFran.getSaldo()}")
+    println("SALDO ALEX: ${contaAlex.saldo}")
+    println("SALDO FRAN: ${contaFran.saldo}")
 
 
 }
 
-class Conta {
-    var titular = ""
-    var numero = 0
-    private var saldo = 0.0
+class Conta(
+    //construtor primário//
+    val titular: String,
+    val numero: Int
+) {
 
+    var saldo = 0.0
+        private set
+
+        //construtor secundário//
+//    constructor(titular: String, numero: Int) {
+//        this.titular = titular
+//        this.numero = numero
+//    }
 
     fun deposita(valor: Double) {
-        this.saldo += valor
+        if (valor > 0) {
+            this.saldo += valor
+        }
     }
 
     fun saca(valor: Double) {
@@ -87,13 +95,16 @@ class Conta {
         return false
     }
 
-    fun getSaldo(): Double {
-        return saldo
-    }
-
-    fun setSaldo(valor: Double) {
-        saldo = valor
-    }
+//    fun getSaldo(): Double {
+//        return saldo
+//    }
+//
+//    fun setSaldo(valor: Double) {
+//        if (valor > 0){
+//            saldo = valor
+//        }
+//
+//    }
 }
 
 
@@ -147,11 +158,8 @@ fun estudoCopiaReferencia() {
 
     //--REFERENCIA--//
     // JÁ NESSE CASO FAZEMOS UMA REFERENCIA, POIS SE TRATA DE OBJETOS. (contaMAria -ref.-> contaJoao -ref.-> Conta())
-    val contaJoao = Conta()
+    val contaJoao = Conta("joao", 1002)
     val contaMaria = contaJoao
-    contaJoao.titular = "joão"
-    contaMaria.titular = "Maria"
-
     println(contaJoao.titular)
     println(contaMaria.titular)
     //-------------------------//
@@ -206,6 +214,3 @@ fun estudoFor() {
 //    }
 //    }
 }
-
-
-
