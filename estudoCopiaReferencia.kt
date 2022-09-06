@@ -12,7 +12,7 @@ fun estudoCopiaReferencia() {
 
     //--REFERENCIA--//
     // JÁ NESSE CASO FAZEMOS UMA REFERENCIA, POIS SE TRATA DE OBJETOS. (contaMAria -ref.-> contaJoao -ref.-> Conta())
-    val contaJoao = Conta("joao", 1002)
+    val contaJoao = ContaCorrente("joao", 1002)
     val contaMaria = contaJoao
     println(contaJoao.titular)
     println(contaMaria.titular)

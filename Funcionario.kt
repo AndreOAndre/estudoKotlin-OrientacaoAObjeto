@@ -1,24 +1,23 @@
-open class Funcionario(
+abstract class Funcionario(
     val nome: String,
     val cpf: String,
     val salario: Double,
 ) {
 
-    //-----SINTAXE MAIS OTIMIZADA FUNÇÃO-----//
-    open fun bonificacao(): Double = salario / 100 * 10
+    abstract val bonificacao: Double
 
-    
-    fun estudoFuncaoProperty(){
-    //-----SINTAXE MAIS COMPELXA FUNÇÃO-----//
+
+    fun estudoFuncaoProperty() {
+        //-----SINTAXE MAIS COMPELXA FUNÇÃO-----//
 
 //    open fun bonificacao(): Double {
 //        return salario / 100 * 10
 //    }
 
 
-    //---------------------------OUTRA FORMA DE APLICAR A BONIFICAÇÃO- PROPERTY-------------------//
+        //---------------------------OUTRA FORMA DE APLICAR A BONIFICAÇÃO- PROPERTY-------------------//
 
-    //-----SINTAXE MAIS COMPELXA PROPERTY-----//
+        //-----SINTAXE MAIS COMPELXA PROPERTY-----//
 
 //    open val bonificacao: Double
 //        get() {
@@ -27,7 +26,7 @@ open class Funcionario(
 //}
 
 
-    //-----SINTAXE MAIS OTIMIZADA PROPERTY-----//
+        //-----SINTAXE MAIS OTIMIZADA PROPERTY-----//
 
 //    open val bonificacao: Double get() = salario / 100 * 10
     }
