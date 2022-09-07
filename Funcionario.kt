@@ -3,9 +3,7 @@ abstract class Funcionario(
     val cpf: String,
     val salario: Double,
 ) {
-
     abstract val bonificacao: Double
-
 
     fun estudoFuncaoProperty() {
         //-----SINTAXE MAIS COMPELXA FUNÇÃO-----//
