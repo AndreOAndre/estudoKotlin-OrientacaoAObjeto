@@ -1,10 +1,12 @@
-class ContaCorrente(
+class ContaSalario(
     titular: String,
     numero: Int,
-) : ContaX(
+) : Conta(
     titular,
-    numero
-), Transferir {
+    numero,
+) {
+    
+
     override fun saca(valor: Double) {
         val valorTaxa = valor + 0.1
         if (this.saldo >= valorTaxa){

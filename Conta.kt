@@ -17,14 +17,14 @@ abstract class Conta(
 
     abstract fun saca(valor: Double)
 
-    fun transfere(valor: Double, destino: Conta): Boolean {
-        if (saldo >= valor) {
-            saldo -= valor
-            destino.saldo += valor
-            return true
-        }
-        return false
-    }
+//    fun transfere(valor: Double, destino: Conta): Boolean {
+//        if (saldo >= valor) {
+//            saldo -= valor
+//            destino.saldo += valor
+//            return true
+//        }
+//        return false
+//    }
 
 //    fun getSaldo(): Double {
 //        return saldo

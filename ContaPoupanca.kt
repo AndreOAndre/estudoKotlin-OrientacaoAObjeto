@@ -1,10 +1,12 @@
 class ContaPoupanca(
     titular: String,
-    numero: Int
-) : Conta(
+    numero: Int,
+) : ContaX(
     titular,
-    numero
-) {
+    numero,
+),Transferir {
+
+
     override fun saca(valor: Double) {
         if (saldo >= valor){
             saldo -= valor

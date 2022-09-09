@@ -6,7 +6,14 @@ fun testaContasDiferentes() {
 
     val contaPoupanca = ContaPoupanca(
         titular = "fran",
-        numero = 1001
+        numero = 1001,
+
+    )
+
+    val contaSalario = ContaSalario(
+        titular = "gui",
+        numero = 1002,
+        saldo = 0.0
     )
 
     println("TESTA DEPOSITANDO")
@@ -34,6 +41,8 @@ fun testaContasDiferentes() {
     println()
 
     contaCorrente.transfere(valor = 100.0, destino = contaPoupanca)
+//    contaPoupanca.transfere(destino = contaSalario, valor = 100.0)
+
 
     println("saldo conta corrente após transferir para conta poupança: ${contaCorrente.saldo}")
     println("saldo conta poupança após receber transferencia: ${contaPoupanca.saldo}")

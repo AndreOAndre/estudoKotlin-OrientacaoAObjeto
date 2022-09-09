@@ -1,8 +1,8 @@
 fun testaCondicaoConta() {
-    val contaAlex = Conta("alex", 1000)
+    val contaAlex = ContaCorrente("alex", 1000)
     contaAlex.deposita(200.0)
 
-    val contaFran = Conta("fran", 1001)
+    val contaFran = ContaPoupanca("fran", 1001)
     contaFran.deposita(300.0)
 
 
@@ -42,7 +42,7 @@ fun testaCondicaoConta() {
     println()
 
     println("transferencia da conta da Fran para o Alex")
-    if (contaFran.transfere(destino = contaAlex, valor = 100.0)) {
+    if (contaFran.transferir(destino = contaAlex, valor = 100.0)) {
         println("transferencia bem sucedida")
     } else {
         println("falha na transferencia")
